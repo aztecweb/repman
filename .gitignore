@@ -16,7 +16,6 @@
 ###< phpunit/phpunit ###
 
 ###> IDE ###
-/.vscode
 /.phan
 /.idea
 ###< IDE ###
