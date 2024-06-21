@@ -57,7 +57,7 @@ Including an example of how to use your role:
 
 ```yaml
 # Basic settings
-postgresql_version: 12
+postgresql_version: 15
 postgresql_encoding: "UTF-8"
 postgresql_locale: "en_US.UTF-8"
 postgresql_ctype: "en_US.UTF-8"
