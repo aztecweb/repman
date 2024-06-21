@@ -1,7 +1,7 @@
 # file: postgresql/defaults/main.yml
 
 # Basic settings
-postgresql_version: 12
+postgresql_version: 15
 postgresql_version_terse: "{{ postgresql_version | replace('.', '') }}"  # Short version of the postgresql_version, used in some path and filenames
 postgresql_encoding: "UTF-8"
 postgresql_data_checksums: false
@@ -372,7 +372,7 @@ postgresql_wal_receiver_timeout: 60s
 # time to wait before retrying to retrieve WAL after a failed attempt
 postgresql_wal_retrieve_retry_interval: 5s # (>= 9.5)
 
-# - Subscribers - (>= 10) 
+# - Subscribers - (>= 10)
 
 # These settings are ignored on a publisher.
 
