@@ -17,7 +17,6 @@ php_packages:
   - php{{ php_version }}-common
   - php{{ php_version }}-curl
   - php{{ php_version }}-fpm
-  - php{{ php_version }}-json
   - php{{ php_version }}-opcache
   - php{{ php_version }}-pdo
   - php{{ php_version }}-pgsql
