@@ -594,8 +594,6 @@ postgresql_track_io_timing:           off   # (>= 9.2)
 postgresql_track_functions:           "none" # none, pl, all
 postgresql_track_activity_query_size: 1024
 postgresql_update_process_title:      on
-postgresql_stats_temp_directory:      "pg_stat_tmp"
-
 
 # - Statistics Monitoring -
 
@@ -660,7 +658,6 @@ postgresql_lock_timeout:                          0           # in milliseconds,
 postgresql_idle_in_transaction_session_timeout:   0           # in milliseconds, 0 is disabled (>= 9.6)
 postgresql_vacuum_freeze_min_age:                 50000000
 postgresql_vacuum_freeze_table_age:               150000000
-postgresql_vacuum_cleanup_index_scale_factor:     0.1         # (>= 11)
 postgresql_vacuum_multixact_freeze_min_age:       5000000     # (>= 9.3)
 postgresql_vacuum_multixact_freeze_table_age:     150000000   # (>= 9.3)
 
@@ -738,7 +735,6 @@ postgresql_backslash_quote:             "safe_encoding" # on, off, or safe_encod
 postgresql_default_with_oids:           off
 postgresql_escape_string_warning:       on
 postgresql_lo_compat_privileges:        off
-postgresql_operator_precedence_warning: off
 postgresql_quote_all_identifiers:       off
 postgresql_sql_inheritance:             on
 postgresql_standard_conforming_strings: on
