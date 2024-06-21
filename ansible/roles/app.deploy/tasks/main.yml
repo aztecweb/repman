@@ -97,13 +97,13 @@
 
 - name: Set ACLs
   acl:
-  path: "{{ item.path }}"
-  entity: www-data
-  etype: group
-  permissions: "{{ item.permissions }}"
-  state: "{{ item.state }}"
-  default: yes
-  recursive: true
+    path: "{{ item.path }}"
+    entity: www-data
+    etype: group
+    permissions: "{{ item.permissions }}"
+    state: "{{ item.state }}"
+    default: yes
+    recursive: true
   with_items:
     - { path: "{{ app_shared_dir }}/var/log", permissions: "rwx", state: "present" }
     - { path: "{{ app_shared_dir }}/var/cache", permissions: "rwx", state: "present" }
