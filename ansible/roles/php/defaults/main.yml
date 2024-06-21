@@ -10,7 +10,7 @@ php_post_max_size: "{{ nginx_client_max_body_size }}"
 php_memory_limit: "512M"
 php_max_execution_time: 30
 
-php_version: "7.4"
+php_version: "8.0"
 
 php_packages:
   - php{{ php_version }}-cli
