@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: repman
   name: Repman atomic deploy
   become: true
   become_user: repman
