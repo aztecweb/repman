@@ -51,6 +51,21 @@
   with_items: "{{ app_shared_resources }}"
   become_user: "{{ system_user }}"
 
+- block:
+    - name: Check if the .env.prod.local file exists
+      stat:
+        path: "{{ app_shared_dir }}/.env.prod.local"
+      register: env_file
+
+    - name: Create symlink to .env.prod.local if it exists
+      file:
+        src: "{{ app_shared_dir }}/.env.prod.local"
+        dest: "{{ app_current_release_dir }}/.env.prod.local"
+        state: link
+        force: yes
+      become_user: "{{ system_user }}"
+      when: env_file.stat.exists
+
 - name: Warmup symfony application cache
   command: bin/console cache:warmup --env=prod --no-debug
   args:
