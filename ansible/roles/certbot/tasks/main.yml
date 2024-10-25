@@ -1,0 +1,42 @@
+---
+- name: Issue certificates with Certbot
+  block:
+    - command: >
+        certbot certonly --dns-cloudflare --dns-cloudflare-propagation-seconds 60
+        --dns-cloudflare-credentials {{ dir_secrets_cloudflare }} --agree-tos --email {{ email }} --expand
+        -d {{ domains | join(' -d ') }}
+      ignore_errors: yes
+      become: true
+
+- name: Configure cron job for automatic Certbot renewal
+  cron:
+    name: "Renew certificates with Certbot"
+    minute: "30"
+    hour: "2"
+    day: "*"
+    month: "*"
+    weekday: "1"
+    job: "certbot renew --quiet --dns-cloudflare --dns-cloudflare-propagation-seconds 60 --dns-cloudflare-credentials {{ dir_secrets_cloudflare }} --agree-tos --email {{ email }} >> /var/log/le-renew.log 2>&1"
+    user: root
+  become: true
+
+- name: Insert SSL certificates into the http block of nginx.conf
+  blockinfile:
+    path: /etc/nginx/nginx.conf
+    marker: ""
+    insertbefore: "^\\s*\\}$"
+    block: |
+      ssl_certificate /etc/letsencrypt/live/{{ server_hostname }}/fullchain.pem;
+      ssl_certificate_key /etc/letsencrypt/live/{{ server_hostname }}/privkey.pem;
+  become: true
+
+- name: Adjust listen 443; line
+  replace:
+    path: /etc/nginx/nginx.conf
+    regexp: '^\s*listen 443;\s*$'
+    replace: 'listen 443 ssl;'
+  become: true
+
+- name: Restart nginx
+  service: name=nginx enabled=yes state=restarted
+  become: true

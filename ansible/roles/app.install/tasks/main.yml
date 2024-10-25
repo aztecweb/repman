@@ -29,3 +29,11 @@
     - "{{ app_shared_dir }}/var/cache"
     - "{{ app_shared_dir }}/var/proxy"
     - "{{ app_shared_dir }}/var/repo"
+
+- name: Instala certbot e plugin Cloudflare
+  ansible.builtin.package:
+    name:
+      - certbot
+      - python3-certbot-dns-cloudflare
+    state: present
+    update_cache: yes
