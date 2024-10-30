@@ -30,7 +30,7 @@
     - "{{ app_shared_dir }}/var/proxy"
     - "{{ app_shared_dir }}/var/repo"
 
-- name: Instala certbot e plugin Cloudflare
+- name: Install certbot and python3-certbot-dns-cloudflare
   ansible.builtin.package:
     name:
       - certbot
