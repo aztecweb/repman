@@ -88,7 +88,7 @@
 # - Authentication -
 
 #authentication_timeout = 1min		# 1s-600s
-#password_encryption = md5		# md5 or scram-sha-256
+#password_encryption = scram-sha-256		# md5 or scram-sha-256
 #db_user_namespace = off
 
 # GSSAPI using Kerberos
@@ -285,7 +285,6 @@
 
 #max_wal_senders = 10		# max number of walsender processes
 				# (change requires restart)
-#wal_keep_segments = 0		# in logfile segments; 0 disables
 #wal_sender_timeout = 60s	# in milliseconds; 0 disables
 
 #max_replication_slots = 10	# max number of replication slots
