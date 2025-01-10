@@ -1,11 +1,15 @@
 ---
+- name: Install snap certbot-dns-cloudflare plugin
+  command: snap install certbot-dns-cloudflare
+  become: true
+
 - name: Issue certificates with Certbot
   block:
     - command: >
         certbot certonly --dns-cloudflare --dns-cloudflare-propagation-seconds 60
         --dns-cloudflare-credentials {{ dir_secrets_cloudflare }} --agree-tos --email {{ email }} --expand
         -d {{ domains | join(' -d ') }}
-      ignore_errors: yes
+      ignore_errors: true
       become: true
 
 - name: Configure cron job for automatic Certbot renewal
