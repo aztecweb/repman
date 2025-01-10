@@ -13,6 +13,7 @@
     - supervisor
     - app.install
     - app.deploy
+    - certbot
     - cron
   tasks:
     - name: Download security database
